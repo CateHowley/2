@@ -94,8 +94,8 @@ public class BasicGameApp implements Runnable {
 	public void moveThings()
 	{
       //calls the move( ) code in the objects
-		astro.move();
-		jack.move();
+		astro.Bounce();
+		jack. Bounce();
 	}
 	
    //Pauses or sleeps the computer for the amount specified in milliseconds

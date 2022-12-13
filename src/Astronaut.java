@@ -40,12 +40,39 @@ public class Astronaut {
     public void move() {
         xpos = xpos + dx;
         ypos = ypos + dy;
- 
+
+
     }
-}
 
+    public void wrap() {
+        if (xpos > 1000) {
+            xpos = 0;
+        }
+            if (ypos > 800) {
+                ypos = 0;
+            }
+        xpos=xpos +dx;
+        ypos=ypos +dy;
+    }
+                public void Bounce() {
+                    if (xpos > 1000-59) {
+                        dx = -dx;
+                    }
+                    if (ypos > 800-59){
+                        dy = -dy;
+                    }
+                    if (xpos < 0) {
+                        dx = -dx;
+                    }
+                        if (ypos < 0) {
+                            dy = -dy;
+                        }
 
+                    xpos=xpos + dx;
+                    ypos=ypos + dy;
 
+                    }
+    }
 
 
 
