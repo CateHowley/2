@@ -39,11 +39,15 @@ public class BasicGameApp implements Runnable {
    
 	public BufferStrategy bufferStrategy;
 	public Image astroPic;
+	public Image background;
+	public Image emojiPic;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	private Astronaut astro;
 	private Astronaut jack;
+
+	private Astronaut emoji;
 
    // Main method definition
    // This is the code that runs first and automatically
@@ -63,11 +67,15 @@ public class BasicGameApp implements Runnable {
        
       //variable and objects
       //create (construct) the objects needed for the game and load up 
-		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
+		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.jpg"); //load the picture
+		emojiPic = Toolkit.getDefaultToolkit().getImage("images.png"); //load the picture
+		background = astroPic = Toolkit.getDefaultToolkit().getImage("rockyb.jpg"); //load the picture
 		astro = new Astronaut(10,100);
-		jack = new Astronaut(10,100);
+		jack = new Astronaut(150,100);
+		emoji = new Astronaut(100,100);
 		jack.dy=1;
 		jack.dx=0;
+
 
 	}// BasicGameApp()
 
@@ -96,6 +104,7 @@ public class BasicGameApp implements Runnable {
       //calls the move( ) code in the objects
 		astro.Bounce();
 		jack. Bounce();
+		emoji.Bounce();
 	}
 	
    //Pauses or sleeps the computer for the amount specified in milliseconds
@@ -145,9 +154,18 @@ public class BasicGameApp implements Runnable {
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 
       //draw the image of the astronaut
+		g.drawImage(background,0,0,1000,700, null);
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
 		g.drawImage(astroPic, jack.xpos, jack.ypos, jack.width, jack.height, null);
+		g.drawImage(emojiPic, emoji.xpos, emoji.ypos, emoji.width, emoji.height, null);
+
+		g.draw(new Rectangle(astro.xpos,astro.ypos,astro.width,astro.height));
+		g.draw(new Rectangle(jack.xpos,jack.ypos,jack.width,jack.height));
+		g.draw(new Rectangle(emoji.xpos,emoji.ypos,emoji.width,emoji.height));
+
 		g.dispose();
+
+
 
 		bufferStrategy.show();
 	}
