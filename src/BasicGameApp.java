@@ -42,6 +42,8 @@ public class BasicGameApp implements Runnable {
 	public Image background;
 	public Image emojiPic;
 
+
+
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	private Astronaut astro;
@@ -74,11 +76,17 @@ public class BasicGameApp implements Runnable {
 		jack = new Astronaut(150,100);
 		emoji = new Astronaut(100,100);
 		jack.dy=1;
-		jack.dx=0;
+		jack.dx=2;
 
 
 	}// BasicGameApp()
+	public void crash(){
+		If(jack.rec.intersects(astro.rec)){
+			System.out. println("crash");
+		}
+	}
 
+}
    
 //*******************************************************************************
 //User Method Section
@@ -99,12 +107,18 @@ public class BasicGameApp implements Runnable {
 	}
 
 
+
+
+
 	public void moveThings()
 	{
       //calls the move( ) code in the objects
 		astro.Bounce();
 		jack. Bounce();
 		emoji.Bounce();
+		crash();
+
+
 	}
 	
    //Pauses or sleeps the computer for the amount specified in milliseconds
