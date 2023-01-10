@@ -75,18 +75,32 @@ public class BasicGameApp implements Runnable {
 		astro = new Astronaut(10,100);
 		jack = new Astronaut(150,100);
 		emoji = new Astronaut(100,100);
-		jack.dy=1;
-		jack.dx=2;
+		jack.dy=3;
+		jack.dx=-1;
+
 
 
 	}// BasicGameApp()
-	public void crash(){
-		If(jack.rec.intersects(astro.rec)){
+	public void crash()
+	{
+		if(jack.rec.intersects(astro.rec))
+	{
 			System.out. println("crash");
+			astro.dx = 1*astro.dx;
+			astro.dy = -astro.dy;
+			jack.dx = -1*jack.dx;
+			//jack.dy = -jack.dy;
+
 		}
+		System.out. println("crash");
+		astro.dx = 1*astro.dx;
+		astro.dy = -astro.dy;
+		emoji.dx = -1*emoji.dx;
+		//emoji.dy = -emoji.dy;
+
 	}
 
-}
+
    
 //*******************************************************************************
 //User Method Section
