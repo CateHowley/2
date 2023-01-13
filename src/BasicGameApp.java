@@ -83,20 +83,24 @@ public class BasicGameApp implements Runnable {
 	}// BasicGameApp()
 	public void crash()
 	{
-		if(jack.rec.intersects(astro.rec))
+		if(astro.rec.intersects(jack.rec))
 	{
 			System.out. println("crash");
 			astro.dx = 1*astro.dx;
 			astro.dy = -astro.dy;
 			jack.dx = -1*jack.dx;
-			//jack.dy = -jack.dy;
+			jack.dy = -jack.dy;
+			jack.isAlive = false;
 
 		}
-		System.out. println("crash");
-		astro.dx = 1*astro.dx;
-		astro.dy = -astro.dy;
-		emoji.dx = -1*emoji.dx;
-		//emoji.dy = -emoji.dy;
+
+//		System.out. println("crash");
+//		astro.dx = 1*astro.dx;
+//		astro.dy = -astro.dy;
+//		emoji.dx = -1*emoji.dx;
+//		emoji.dy = -emoji.dy;
+//		jack.dx = -1 *astro.dx;
+//		jack.dy= jack.dy;
 
 	}
 
@@ -184,11 +188,14 @@ public class BasicGameApp implements Runnable {
       //draw the image of the astronaut
 		g.drawImage(background,0,0,1000,700, null);
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
-		g.drawImage(astroPic, jack.xpos, jack.ypos, jack.width, jack.height, null);
+		if(jack.isAlive == true) {
+			g.drawImage(astroPic, jack.xpos, jack.ypos, jack.width, jack.height, null);
+			g.draw(new Rectangle(jack.xpos, jack.ypos, jack.width, jack.height));
+
+		}
 		g.drawImage(emojiPic, emoji.xpos, emoji.ypos, emoji.width, emoji.height, null);
 
 		g.draw(new Rectangle(astro.xpos,astro.ypos,astro.width,astro.height));
-		g.draw(new Rectangle(jack.xpos,jack.ypos,jack.width,jack.height));
 		g.draw(new Rectangle(emoji.xpos,emoji.ypos,emoji.width,emoji.height));
 
 		g.dispose();
