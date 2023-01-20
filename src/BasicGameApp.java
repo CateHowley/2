@@ -69,12 +69,12 @@ public class BasicGameApp implements Runnable {
        
       //variable and objects
       //create (construct) the objects needed for the game and load up 
-		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.jpg"); //load the picture
-		emojiPic = Toolkit.getDefaultToolkit().getImage("images.png"); //load the picture
-		background = astroPic = Toolkit.getDefaultToolkit().getImage("rockyb.jpg"); //load the picture
+		astroPic = Toolkit.getDefaultToolkit().getImage("babybees.jpg"); //load the picture
+		emojiPic = Toolkit.getDefaultToolkit().getImage("babybees.jpg"); //load the picture
+		background  = Toolkit.getDefaultToolkit().getImage("bees.jpg"); //load the picture
 		astro = new Astronaut(10,100);
 		jack = new Astronaut(150,100);
-		emoji = new Astronaut(100,100);
+		emoji = new Astronaut(120,100);
 		jack.dy=3;
 		jack.dx=-1;
 
@@ -113,7 +113,8 @@ public class BasicGameApp implements Runnable {
 
    // main thread
    // this is the code that plays the game after you set things up
-	public void run() {
+	public void run()
+		public void spin() {
 
       //for the moment we will loop things forever.
 		while (true) {
@@ -138,6 +139,8 @@ public class BasicGameApp implements Runnable {
 
 
 	}
+
+
 	
    //Pauses or sleeps the computer for the amount specified in milliseconds
    public void pause(int time ){
