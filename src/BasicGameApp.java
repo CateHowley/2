@@ -14,6 +14,8 @@
 //Graphics Libraries
 
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 import java.awt.*;
 import javax.swing.*;
@@ -22,7 +24,8 @@ import javax.swing.*;
 //*******************************************************************************
 // Class Definition Section
 
-public class BasicGameApp implements Runnable {
+public class BasicGameApp implements Runnable, KeyListener {
+
 
     //Variable Definition Section
     //Declare the variables used in the program
@@ -77,6 +80,7 @@ int crashCounter;
     private Astronaut cater;
 
     private Astronaut button;
+    private Astronaut[] emojis;
 
 
     // Main method definition
@@ -95,7 +99,10 @@ int crashCounter;
     // Initialize your variables and construct your program objects here.
     public BasicGameApp() {
 
+
         setUpGraphics();
+        canvas.addKeyListener(this);
+//        for(x int x=0; x<)
 
         //variable and objects
         //create (construct) the objects needed for the game and load up
@@ -112,6 +119,11 @@ int crashCounter;
         astro = new Astronaut((int)(Math.random()*900)+10, 100);
         jack = new Astronaut( (int)(Math.random()*900)+12, 100);
         emoji = new Astronaut(320, 100);
+        emojis= new Astronaut[10];//construct the array to hold the astro is it empty
+        for(int x=0;x<emojis.length;x++){
+            emojis[x]=new Astronaut((int)(300*Math.random()), x*200); //fill each slot
+        }
+
         bunny = new Astronaut(420, 100);
         bug = new Astronaut(540, 100);
         dog = new Astronaut(660, 100);
@@ -131,12 +143,19 @@ int crashCounter;
         spider.dx=-1;
 
 
+//public void Array babybees
+//        for (int  t=0; t< babybees.size(); t++){
+//            for (int a=0; a< babybees.length); a++){
+//                if (babybees) ;
+//
+//
+//            }
+//            }
+        }
 
 
 
-
-
-    }// BasicGameApp()
+    // BasicGameApp()
 
     public void crash() {
 
@@ -333,4 +352,43 @@ int crashCounter;
 
         bufferStrategy.show();
     }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int code = e.getKeyCode();
+        System.out.println(code);
+        if (code == 68) {
+
+            //-bunny.dy = 50;
+        }
+        if (code == 65) {
+            bunny.dx = 88;
+        }
+        if (code == 40) {
+            bunny.dx = 89;
+        }
+
+                if (code == 40) {
+                    bunny.dx = 89;
+
+                }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
+
+
+//    Math.abs(code)
+
+
 }
+//
+//public void
+//    for (int t=0; t<)
