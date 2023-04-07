@@ -16,15 +16,17 @@
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.event.MouseInputListener;
 
 
 //*******************************************************************************
 // Class Definition Section
 
-public class BasicGameApp implements Runnable, KeyListener {
+public class BasicGameApp implements Runnable, KeyListener, MouseInputListener {
 
 
     //Variable Definition Section
@@ -143,10 +145,7 @@ int crashCounter;
         spider.dx=-1;
 
 
-//public void Array babybees
-//        for (int  t=0; t< babybees.size(); t++){
-//            for (int a=0; a< babybees.length); a++){
-//                if (babybees) ;
+//
 //
 //
 //            }
@@ -287,6 +286,8 @@ int crashCounter;
         // creates a canvas which is a blank rectangular area of the screen onto which the application can draw
         // and trap input events (Mouse and Keyboard events)
         canvas = new Canvas();
+        canvas.addKeyListener(this);
+        canvas.addMouseListener(this);
         canvas.setBounds(0, 0, WIDTH, HEIGHT);
         canvas.setIgnoreRepaint(true);
 
@@ -315,6 +316,10 @@ int crashCounter;
         //draw the image of the astronaut
         g.drawImage(background, 0, 0, 1000, 700, null);
         g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
+
+        for(int x=0;x<emojis.length;x++) {
+            g.drawImage(emojiPic, emojis[x].xpos, emojis[x].ypos, 50, 50, null);
+        }
         if (jack.isAlive == true) {
             g.drawImage(astroPic, jack.xpos, jack.ypos, jack.width, jack.height, null);
             g.draw(new Rectangle(jack.xpos, jack.ypos, jack.width, jack.height));
@@ -362,28 +367,68 @@ int crashCounter;
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
         System.out.println(code);
-        if (code == 68) {
-
-            //-bunny.dy = 50;
+        if (code == 83) {
+            bunny.dx = 40;
         }
-        if (code == 65) {
-            bunny.dx = 88;
-        }
-        if (code == 40) {
-            bunny.dx = 89;
-        }
+            if (code == 68)
+                bunny.dx = 23;
 
-                if (code == 40) {
-                    bunny.dx = 89;
+            if (code == 65)
+                bunny.dx = 32;
 
-                }
+            if (code == 83)
+                bunny.dx = 39;
+
+
     }
+
+
 
     @Override
     public void keyReleased(KeyEvent e) {
 
     }
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        System.out.println(e.getX());
+        bunny.xpos= e.getX();
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+
+    }
+//    @Override
+//    public void mouseClicked(MouseEvent e) {
+//        System.out.println(e.getX());
+//        bunny.xpos= e.getx();
+//    }
 
 //    Math.abs(code)
 
